@@ -59,7 +59,7 @@ async function loadSampleIfNoBackend() {
   const status = document.getElementById('status');
   try {
     // Try health check
-    const h = await fetch('/health');
+    const h = await fetch('health');
     if (h.ok) return; // backend present
   } catch (_) {
     // no backend; load sample data
@@ -67,7 +67,7 @@ async function loadSampleIfNoBackend() {
 
   status.textContent = 'No backend detected — loading sample data';
   try {
-    const resp = await fetch('/static/sample-data.json');
+    const resp = await fetch('sample-data.json');
     const result = await resp.json();
 
     const monthly = result.monthly || [];
